@@ -182,7 +182,7 @@ form button[type='submit'] {
 
 .content-parcels {
     overflow: auto;
-    height: calc(100vh - 160px);
+    height: calc(100dvh - 160px);
 
     div {
         padding: .75rem .5rem;
