@@ -79,6 +79,7 @@ const getTextParcels = () => {
     const text = textProposit(
         measure.value,
         notInterest.value,
+        qtyParcel.value,
         items.join("\n")
     )
 
@@ -109,7 +110,6 @@ const navigatorShare = async () => {
 modal.querySelector("button").addEventListener("click", navigatorShare);
 
 form.addEventListener("submit", (e) => {
-
     e.preventDefault();
 
     calcular();
