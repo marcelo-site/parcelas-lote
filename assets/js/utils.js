@@ -1,5 +1,6 @@
 const formatPrice = (value) => {
-  return value.toLocaleString("pt-br", {
+  const num = typeof value === "string" ? Number(value) : value
+  return num.toLocaleString("pt-br", {
     style: "currency",
     currency: "BRL"
   })

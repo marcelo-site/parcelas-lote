@@ -14,10 +14,8 @@ const exitPageParcels = pageParcels.querySelector("i");
 const share = pageParcels.querySelector("button");
 const inputZap = modal.querySelector("input");
 
-const getEntry = (data) => {
-    const entryValue = Number(entry.value.replace(/\D/g, "")) / 100;
-    if (data) return entryValue;
-    return uniquePay.value === "1" ? 0 : entryValue;
+const getEntry = () => {
+    return Number(entry.value.replace(/\D/g, "")) / 100;
 }
 
 const getValue = () => {
@@ -25,8 +23,10 @@ const getValue = () => {
 }
 
 const handleValueParcel = () => {
-    const entry = getEntry(true);
+    const entry = getEntry();
+    console.log(entry)
     const valueFinance = getValue() - entry;
+    console.log(valueFinance)
     const dataArr = [];
     const maxParcel = qtyParcel.value;
     const taxa = +interest.value / 100;
@@ -73,15 +73,20 @@ const calcular = () => {
     });
 }
 
+const regexValueLastParcel = /\b\d{1,3}(\.\d{3})*,\d{2}\b/
 const getTextParcels = () => {
     const nodeParcels = document.querySelector(".content-parcels").querySelectorAll("div > span");
     const items = Array.prototype.map.call(nodeParcels, item => item.innerHTML);
-    const text = textProposit(
-        measure.value,
-        notInterest.value,
-        qtyParcel.value,
-        items.join("\n")
-    )
+    const lastParcel = items[items.length - 1].match(regexValueLastParcel);
+
+    const text = textProposit({
+        measure: measure.value,
+        notInterest: notInterest.value,
+        qtyParcels: qtyParcel.value,
+        data: items.join("\n"),
+        entry: getEntry(),
+        lastParcel: + lastParcel[0].replace(".", "").replace(",", "."),
+    })
 
     return text
 }

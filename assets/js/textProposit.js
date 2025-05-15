@@ -1,13 +1,27 @@
-export const textProposit = (measure, notInterest, qtyParcels, data) => {
-  const measureSplit = measure.split("x");
-  let text = `Lote medindo ${measureSplit[0]} metros de largura por ${measureSplit[1]} metros de comprimento`;
+import { formatPrice } from "./utils.js";
 
-  if (notInterest) {
-    text += `, pode ser dividido em *${notInterest} parcelas sem juros* ou em até *${qtyParcels} parcelas* `;
-  } else {
-    text += `pode ser dividido em até *${qtyParcels} parcelas*`
+export const textProposit = (
+  {
+    measure,
+    notInterest,
+    qtyParcels,
+    data,
+    entry,
+    lastParcel
   }
-  text += `.\n\nDetalhamento das Parcelas abaixo:\n-----------------------------------\n`
+) => {
+  const measureSplit = measure.split("x");
+  let text = `Lote medindo ${measureSplit[0]} metros de largura por ${measureSplit[1]} metros de comprimento, `;
+
+  if (entry) {
+    text += `com entrada de *${formatPrice(entry)}*, `
+  }
+  if (notInterest) {
+    text += `podendo ser dividido em *${notInterest} parcelas sem juros* ou dividido em até ${qtyParcels} parcelas de *${formatPrice(lastParcel)}*`;
+  } else {
+    text += `podendo ser dividido em até ${qtyParcels} parcelas de *${formatPrice(lastParcel)}*`
+  }
+  text += `.\n\n*Detalhamento das Parcelas abaixo:*\n-----------------------------------\n`
 
   return text + data.replace(/&nbsp;/g, " ")
 }
