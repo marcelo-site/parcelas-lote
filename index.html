@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Extrajudicial</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/js/index.js" defer type="module"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300..700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="./assets/manifest.json" />
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+</head>
+
+<body class="flex">
+    <main>
+        <div class="form">
+            <form id="form">
+                <div>
+                    <div class="form-control">
+                        <label for="measure">Medidas do Lote</label>
+                        <select name="measure" id="measure">
+                            <option value="5x20">5 x 20</option>
+                            <option value="6x20" selected>6 x 20</option>
+                            <option value="7x20">7 x 20</option>
+                            <option value="8x20">8 x 20</option>
+                            <option value="9x20">9 x 20</option>
+                            <option value="10x20">10 x 20</option>
+                        </select>
+                    </div>
+                    <div class="form-control">
+                        <label for="value">Valor do Lote</label>
+                        <div class="value">
+                            <input type="text" name="value" id="value" value="R$ 18.000,00">
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <label for="entry">Entrada</label>
+                        <div class="entry">
+                            <input type="text" name="entry" id="entry" value="R$ 0,00">
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <label data-interest="%" for="interest">Juros</label>
+                        <div class="interest">
+                            <input style="width: 72px; text-align: center;" type="number" name="interest" id="interest"
+                                value="3" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <label for="qtyParcel">Quantidade de Parcelas</label>
+                        <div class="qtyParcel">
+                            <input type="number" min="1" max="60" name="qtyParcel" id="qtyParcel" value="10">
+                        </div>
+                    </div>
+                    <div class="form-control" style="margin-bottom: 2.5rem;">
+                        <label for="notInterest">Parcelamento sem Juros</label>
+                        <div class="notInterest">
+                            <input type="number" min="0" max="60" name="notInterest" id="notInterest"
+                                placeholder="Parcelamento que não cobrará juros">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn active">calcular</button>
+            </form>
+        </div>
+
+        <div id="parcels">
+            <h3> <span><i class="bi bi-arrow-left-short"></i> &nbsp; Parcelas</span>
+            </h3>
+            <div class="content-parcels">
+            </div>
+            <button class="btn active">Enviar <i class="bi bi-whatsapp"></i></button>
+        </div>
+
+        <div id="modal" class="flex none">
+            <div>
+                <div class="form-control">
+                    <label for="zap">Whatsapp</label>
+                    <div>
+                        <input class="input" type="tel" name="zap" id="zap">
+                        <i class="bi bi-arrow-right-short flex"></i>
+                    </div>
+                </div>
+                <div class="or"> Ou </div>
+                <button class="btn share active">Lista de contatos</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Feito por <a href="https://www.facebook.com/profile.php?id=100015225941991" target="_blank">Marcelo</a>
+            &copy <span id="yearCopy"></span></p>
+    </footer>
+</body>
+
+</html>
