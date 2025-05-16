@@ -14,19 +14,10 @@ const exitPageParcels = pageParcels.querySelector("i");
 const share = pageParcels.querySelector("button");
 const inputZap = modal.querySelector("input");
 
-const getEntry = () => {
-    return Number(entry.value.replace(/\D/g, "")) / 100;
-}
-
-const getValue = () => {
-    return Number(value.value.replace(/\D/g, "")) / 100;
-}
+const getValue = (input) => Number(input.value.replace(/\D/g, "")) / 100;
 
 const handleValueParcel = () => {
-    const entry = getEntry();
-    console.log(entry)
-    const valueFinance = getValue() - entry;
-    console.log(valueFinance)
+    const valueFinance = getValue(value) - getValue(entry);
     const dataArr = [];
     const maxParcel = qtyParcel.value;
     const taxa = +interest.value / 100;
@@ -84,7 +75,7 @@ const getTextParcels = () => {
         notInterest: notInterest.value,
         qtyParcels: qtyParcel.value,
         data: items.join("\n"),
-        entry: getEntry(),
+        entry: getValue(entry),
         lastParcel: + lastParcel[0].replace(".", "").replace(",", "."),
     })
 
@@ -92,11 +83,11 @@ const getTextParcels = () => {
 }
 
 const submit = (number) => {
-    if (number.replace(/\D/g, "").length < 10) {
-        return
-    }
-    const text = getTextParcels();
-    window.open(`https://wa.me/55${number}?text=${encodeURIComponent(text)}`, "_blank");
+    const num = number.replace(/\D/g, "");
+    if (num.length < 10) return;
+
+    const text = encodeURIComponent(getTextParcels());
+    window.open(`https://api.whatsapp.com/send/?phone=55${num}&text=${text}`, "_blank");
 }
 
 const navigatorShare = async () => {
@@ -143,12 +134,15 @@ modal.querySelector("i").addEventListener("click", () => {
     submit(inputZap.value.replace(/\D/g, ""))
 })
 
-const handleValue = (element) => {
-    const price = getValue();
-    const value = element.value.replace(/\D/g, "");
+const handleValue = (input) => {
+    const price = getValue(value);
+    const entryValue = getValue(entry);
 
-    if (+value > price * 100) element.value = price * 100;
-    mascaraMoeda(element);
+    if (entryValue > price) {
+        entry.value = price * 100;
+        mascaraMoeda(entry)
+    }
+    mascaraMoeda(input);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -156,7 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const interestInit = getParamUrl("juro");
     interest.value = interestInit ?? 2;
     const valueInit = getParamUrl("valor");
-    // value.addEventListener("change", ({ target }) => handleValue(target));
     value.addEventListener("input", ({ target }) => handleValue(target));
     entry.addEventListener("input", ({ target }) => handleValue(target));
     value.value = "R$ " + (valueInit ? valueInit : "0,00");
