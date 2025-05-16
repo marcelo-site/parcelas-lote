@@ -194,10 +194,10 @@ form button[type='submit'] {
         color: red;
         font-size: 1.25rem;
     }
-}
 
-.backGray {
-    background-color: #f1f1f199;
+    div:nth-child(even) {
+        background-color: #f1f1f199;
+    }
 }
 
 [data-interest] {

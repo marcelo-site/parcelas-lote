@@ -42,10 +42,9 @@ const calcular = () => {
     const parcelas = handleValueParcel();
     contentParcels.innerHTML = ""
 
-    parcelas.forEach(({ qty, valueParcel, juros }, i) => {
+    parcelas.forEach(({ qty, valueParcel, juros }) => {
         const div = document.createElement("div");
         div.classList.add('flex');
-        if (i % 2 !== 0) div.classList.add("backGray");
 
         const button = document.createElement("button");
         button.innerHTML = `<i class="bi bi-trash"></i>`
