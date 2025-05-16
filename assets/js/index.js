@@ -134,6 +134,12 @@ modal.querySelector("i").addEventListener("click", () => {
     submit(inputZap.value.replace(/\D/g, ""))
 })
 
+interest.addEventListener("change", ({ target }) => {
+    target.value = target.value
+        .replace(/[^0-9.]/g, '')
+        .replace(/(\..*?)\..*/g, '$1')
+})
+
 const handleValue = (input) => {
     const price = getValue(value);
     const entryValue = getValue(entry);
