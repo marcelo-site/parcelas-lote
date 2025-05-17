@@ -11,7 +11,7 @@ const formatValue = (value) => {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   })
-    .format(value),
+    .format(value);
 }
 
 const handleURL = (key, param) => {
