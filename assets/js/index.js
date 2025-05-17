@@ -74,7 +74,7 @@ const getTextParcels = () => {
         measure: measure.value,
         notInterest: notInterest.value,
         qtyParcels: qtyParcel.value,
-        data: items.join("\n").replace(/ com juros/g, ""),
+        data: items.join("\n"),
         entry: getValue(entry),
         lastParcel: + lastParcel[0].replace(".", "").replace(",", "."),
     })
