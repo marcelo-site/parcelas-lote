@@ -1,7 +1,7 @@
 import { mascaraMoeda } from "./inputMoeda.js";
 import { handlePhone } from "./maskTel.js";
 import { textProposit } from "./textProposit.js";
-import { formatPrice, getParamUrl } from "./utils.js";
+import { formatPrice, formatValue, getParamUrl } from "./utils.js";
 
 const form = document.querySelector('#form');
 const { measure, value, entry, interest, notInterest, qtyParcel } = form
@@ -55,7 +55,7 @@ const calcular = () => {
             }, 300)
         });
         const span = document.createElement("span");
-        span.innerHTML = `${qty}x de ${formatPrice(valueParcel)} ${!juros ? "sem juros" : "com juros"}`;
+        span.innerHTML = `${qty}x de ${formatValue(valueParcel)} ${!juros ? "sem juros" : ""}`;
 
         div.appendChild(span);
         div.appendChild(button);
