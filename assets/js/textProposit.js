@@ -20,7 +20,7 @@ export const textProposit = (
     text += `sem entrada, `
   }
   if (notInterest) {
-    text += `pode ser dividido em *${notInterest} parcelas sem juros* ou dividido em até ${qtyParcels} parcelas de *${formatPrice(lastParcel)}*`;
+    text += `pode ser dividido em *${notInterest} parcelas sem juros* ou em até ${qtyParcels} parcelas de *${formatPrice(lastParcel)}*`;
   } else {
     text += `pode ser dividido em até ${qtyParcels} parcelas de *${formatPrice(lastParcel)}*`
   }
