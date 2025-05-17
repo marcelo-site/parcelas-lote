@@ -30,4 +30,4 @@ const getParamUrl = (key) => {
   return params.get(key)
 }
 
-export { formatPrice, handleURL, getParamUrl, }
+export { formatPrice, formatValue, handleURL, getParamUrl, }
