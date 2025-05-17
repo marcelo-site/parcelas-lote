@@ -2,6 +2,7 @@ import { formatPrice } from "./utils.js";
 
 export const textProposit = (
   {
+    value,
     measure,
     notInterest,
     qtyParcels,
@@ -11,7 +12,7 @@ export const textProposit = (
   }
 ) => {
   const measureSplit = measure.split("x");
-  let text = `Lote medindo ${measureSplit[0]} metros de largura por ${measureSplit[1]} metros de comprimento, `;
+  let text = `Lote medindo ${measureSplit[0]} metros de largura por ${measureSplit[1]} metros de comprimento valor de ${formatPrice(value)}, pagamento parcelado`;
 
   if (entry) {
     text += `com entrada de *${formatPrice(entry)}*, `
@@ -19,11 +20,11 @@ export const textProposit = (
     text += `sem entrada, `
   }
   if (notInterest) {
-    text += `podendo ser dividido em *${notInterest} parcelas sem juros* ou dividido em até ${qtyParcels} parcelas de *${formatPrice(lastParcel)}*`;
+    text += `pode ser dividido em *${notInterest} parcelas sem juros* ou dividido em até ${qtyParcels} parcelas de *${formatPrice(lastParcel)}*`;
   } else {
-    text += `podendo ser dividido em até ${qtyParcels} parcelas de *${formatPrice(lastParcel)}*`
+    text += `pode ser dividido em até ${qtyParcels} parcelas de *${formatPrice(lastParcel)}*`
   }
-  text += `.\n\n*Detalhamento das Parcelas:*\n⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️\n`
+  text += `.\n\n*Formas de Pagamento:*\n⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️\n`
 
   return text + data.replace(/&nbsp;/g, " ")
 }
