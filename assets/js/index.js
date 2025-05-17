@@ -55,7 +55,7 @@ const calcular = () => {
             }, 300)
         });
         const span = document.createElement("span");
-        span.innerHTML = `${qty}x de ${formatValue(valueParcel)} ${!juros ? "sem juros" : ""}`;
+        span.innerHTML = `${qty} parcelas de ${formatValue(valueParcel)} ${!juros ? "sem juros" : ""}`;
 
         div.appendChild(span);
         div.appendChild(button);
