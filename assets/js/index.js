@@ -154,7 +154,7 @@ const handleValue = (input) => {
 document.addEventListener("DOMContentLoaded", () => {
     handleModal(modal);
     const interestInit = getParamUrl("juro");
-    interest.value = interestInit ?? 2;
+    interest.value = interestInit ?? 1.5;
     const valueInit = getParamUrl("valor");
     value.addEventListener("input", ({ target }) => handleValue(target));
     entry.addEventListener("input", ({ target }) => handleValue(target));
