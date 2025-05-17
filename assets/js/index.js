@@ -70,6 +70,7 @@ const getTextParcels = () => {
     const lastParcel = items[items.length - 1].match(regexValueLastParcel);
 
     const text = textProposit({
+        value: value.value,
         measure: measure.value,
         notInterest: notInterest.value,
         qtyParcels: qtyParcel.value,
