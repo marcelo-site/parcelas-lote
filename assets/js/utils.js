@@ -6,6 +6,14 @@ const formatPrice = (value) => {
   })
 }
 
+const formatValue = (value) => {
+  return new Intl.NumberFormat("pt-br", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })
+    .format(value),
+}
+
 const handleURL = (key, param) => {
   const path = window.location.toString();
   let url = new URL(path);
